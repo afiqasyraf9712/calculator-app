@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <form id="calculator-form">
+      <input
+        type="number"
+        id="a"
+        name="a"
+        placeholder="First number"
+        required
+      />
+      <input
+        type="number"
+        id="b"
+        name="b"
+        placeholder="Second number"
+        required
+      />
+      <select id="operation" name="operation" required>
+        <option value="add">Add</option>
+        <option value="subtract">Subtract</option>
+        <option value="multiply">Multiply</option>
+        <option value="divide">Divide</option>
+      </select>
+      <button type="submit">Calculate</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("calculator-form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+          const a = document.getElementById("a").value;
+          const b = document.getElementById("b").value;
+          const operation = document.getElementById("operation").value;
+          const response = await fetch(`/${operation}?a=${a}&b=${b}`);
+          const result = await response.text();
+          document.getElementById("result").innerText = result;
+        });
+    </script>
+  </body>
+</html>
