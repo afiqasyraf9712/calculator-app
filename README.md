@@ -15,7 +15,7 @@ git clone https://github.com/afiqasyraf9712/calculator-app.git
 
 
 2. **Navigate into the project directory:**
-cd node-prometheus-grafana
+cd calculator-app
 
 
 3. **Start the Docker containers:**
@@ -35,7 +35,7 @@ Open in your web browser the monitoring dashboards:
 - [High Level Application Metrics](#)
 - [Node Service Level Metrics Dashboard](#)
 - [NodeJS Request Flow Dashboard](#)
-
+git
 ## Resources
 - [Prometheus client for Node.js GitHub Repository](https://github.com/siimon/prom-client)
 - [Prometheus - Monitoring System & Time Series Database](https://prometheus.io/)
