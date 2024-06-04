@@ -6,6 +6,8 @@ const { gauge } = require("./gauge");
 const { summary } = require("./summary");
 const { counter } = require("./counter");
 
+// test
+
 // Create a Registry to register the metrics
 const register = new client.Registry();
 
