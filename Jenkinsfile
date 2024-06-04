@@ -17,6 +17,7 @@ pipeline {
             steps {
                 script {
                     // Ensure npm is installed and available
+                    sh 'node --version'
                     sh 'npm --version'
                 }
             }
