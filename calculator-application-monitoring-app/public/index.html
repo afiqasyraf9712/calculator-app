@@ -7,8 +7,9 @@
   <style>
     body {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh; /* 100% of the viewport height */
       margin: 0;
       font-family: Arial, sans-serif;
@@ -21,6 +22,17 @@
       border: 1px solid #ccc;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #calculator-form button {
+      background-color: blue; /* Change the button color to blue */
+      color: white; /* Ensure the text is readable */
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #calculator-form button:hover {
+      background-color: darkblue; /* Darker blue for hover effect */
     }
   </style>
 </head>
