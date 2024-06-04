@@ -27,7 +27,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./calculator-application-monitoring-app  # Specify the correct build context
+          file: ./calculator-application-monitoring-app/Dockerfile  # Specify the path to your Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
