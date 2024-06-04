@@ -10,16 +10,10 @@ pipeline {
             }
         }
         
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        
         stage('Test') {
             steps {
-                sh 'wsl npm install' // Install npm dependencies using WSL
-                sh 'wsl npm test'     // Run npm test command using WSL
+                sh 'npm install' // Install npm dependencies using WSL
+                sh 'npm test'     // Run npm test command using WSL
             }
         }
         
