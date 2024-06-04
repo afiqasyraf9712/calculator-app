@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODEJS_HOME = tool name: 'NodeJS 14', type: 'NodeJS' // Ensure you have set up NodeJS in Jenkins
+        NODEJS_HOME = tool name: 'nodejs-22.2.0', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
         PATH = "${NODEJS_HOME}/bin:${env.PATH}"
     }
 
@@ -24,21 +24,27 @@ pipeline {
                 sh 'npm test'
             }
         }
-    }
-    stage('Build docker image') {
-        steps {
-            script {
-                sh 'docker build -t munajatadnan/devops-integration .'
+
+        stage('Build docker image') {
+            steps {
+                script {
+                    sh 'docker build -t munajatadnan/devops-integration .'
+                }
+            }
+        }
+
+        stage('Push image to Hub') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                        sh 'docker login -u munajatadnan -p ${dockerhubpwd}'
+                    }
+                    sh 'docker push munajatadnan/devops-integration'
+                }
             }
         }
     }
-    stage('Push image to Hub') {
-        steps {
-            script {
-                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u munajatadnan -p ${dockerhubpwd}'
-                }
-                sh 'docker push munajatadnan/devops-integration'
+
     post {
         always {
             archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
@@ -46,6 +52,3 @@ pipeline {
         }
     }
 }
-
-
-
