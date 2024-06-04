@@ -21,8 +21,7 @@ pipeline {
                     sh 'which npm' // Check npm's location
 
                     // Ensure npm is installed and available
-                    sh 'node --version'
-                    sh 'npm --version'
+                    sh "${NODEJS_HOME}/bin/npm --version"
                 }
             }
         }
