@@ -6,11 +6,18 @@ pipeline {
                 sh 'npm install' // Install npm dependencies using WSL
             }
         }
+        
+        stage('Build Image') {
+            steps {
+                echo "Path is ${env.$PATH}"
+                sh 'docker build -t my-node-app:1.0 .'
+            }
+        }
 
         stage('Build Image') {
             steps {
                 script {
-                    docker.build("/home/afiqasyraf9712/calculator-app/calculator-application-monitoring-app")
+                    docker.build("capstone/calculatorapp", "-f /home/afiqasyraf9712/calculator-app/calculator-application-monitoring-app/Dockerfile /home/afiqasyraf9712/calculator-app/calculator-application-monitoring-app")
                 }
             }
         }
