@@ -12,7 +12,7 @@ pipeline {
         
         stage('Test') {
             steps {
-                sh 'npm init'
+                sh 'npm init -y'
                 sh 'npm install express'
                 sh 'npm install prom-client'
                 sh 'npm install' // Install npm dependencies using WSL
