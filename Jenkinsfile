@@ -25,7 +25,20 @@ pipeline {
             }
         }
     }
-
+    stage('Build docker image') {
+        steps {
+            script {
+                sh 'docker build -t munajatadnan/devops-integration .'
+            }
+        }
+    }
+    stage('Push image to Hub') {
+        steps {
+            script {
+                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u munajatadnan -p ${dockerhubpwd}'
+                }
+                sh 'docker push munajatadnan/devops-integration'
     post {
         always {
             archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
@@ -33,3 +46,6 @@ pipeline {
         }
     }
 }
+
+
+
