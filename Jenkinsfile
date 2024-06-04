@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('checkout') {
             steps {
                 checkout scm
             }
@@ -9,29 +9,29 @@ pipeline {
         
         stage('Test') {
             steps {
-                sh 'wsl npm install' // Install npm dependencies within WSL
-                sh 'wsl npm test'    // Run tests within WSL
+                sh 'npm install' // Install npm dependencies
+                sh 'npm test'
             }
         }
         
         stage('Build') {
             steps {
-                sh 'wsl npm run build' // Build within WSL
+                sh 'npm run build'
             }
         }
         
-        stage('Build Docker Image') {
+        stage('Build Image') {
             steps {
-                sh 'wsl docker build -t my-node-app:1.0 .' // Docker build within WSL
+                sh 'docker build -t my-node-app:1.0 .'
             }
         }
         
-        stage('Push Docker Image') {
+        stage('Docker Push') {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                    sh 'wsl docker login -u munajatadnan -p ${dockerhubpwd}' // Docker login within WSL
-                    sh 'wsl docker tag my-node-app:1.0 capstone_project/v1.0' // Docker tag within WSL
-                    sh 'wsl docker push munajatadnan/my-node-app:1.0' // Docker push within WSL
+                    sh 'docker login -u munajatadnan -p ${dockerhubpwd}'
+                    sh 'docker tag my-node-app:1.0 capstone_project/v1.0'
+                    sh 'docker push munajatadnan/devops-integration'
                 }
             }
         }
