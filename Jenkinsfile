@@ -12,7 +12,9 @@ pipeline {
         
         stage('Test') {
             steps {
-                sh 'cd /home/afiqasyraf9712/calculator-app/calculator-application-monitoring-app'
+                sh 'npm init'
+                sh 'npm install express'
+                sh 'npm install prom-client'
                 sh 'npm install' // Install npm dependencies using WSL
                 sh 'npm test'     // Run npm test command using WSL
             }
