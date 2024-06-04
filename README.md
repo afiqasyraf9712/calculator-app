@@ -3,8 +3,8 @@
 
 **Prerequisites**
 Make sure that you have Docker and Docker Compose installed:
-Docker Engine
-Docker Compose
+- Docker Engine
+- Docker Compose
 
 **Getting started**
 Clone the repository:
