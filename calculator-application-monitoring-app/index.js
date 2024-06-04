@@ -132,6 +132,17 @@ app.get("/divide", (req, res) => {
   }
 });
 
+app.get("/squared", (req, res) => {
+  const end = httpRequestDurationMicroseconds.startTimer();
+  const route = req.route.path;
+
+  const a = parseFloat(req.query.a);
+  const result = a * a;
+  res.send(`Result: ${result}`);
+
+  end({ route, code: res.statusCode, method: req.method });
+});
+
 // Start the Express server and listen to a port
 app.listen(8080, () => {
   console.log(
