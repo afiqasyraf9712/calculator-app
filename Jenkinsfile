@@ -10,7 +10,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 echo "Path is ${env.$PATH}"
-                app = docker.build("capstone/calculatorapp")
+                sh 'docker build -t my-node-app:1.0 .'
             }
         }
         
