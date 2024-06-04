@@ -20,8 +20,11 @@ pipeline {
                     sh 'echo $PATH' // Print PATH for debugging
                     sh 'which npm' // Check npm's location
 
+                    // Adding NODEJS_HOME/bin to PATH
+                    env.PATH = "${NODEJS_HOME}/bin:${env.PATH}"
+
                     // Ensure npm is installed and available
-                    sh "${NODEJS_HOME}/bin/npm --version"
+                    sh 'npm --version'
                 }
             }
         }
