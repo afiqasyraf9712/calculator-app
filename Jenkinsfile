@@ -16,6 +16,10 @@ pipeline {
         stage('Setup Node.js and npm') {
             steps {
                 script {
+                    // Diagnostic steps
+                    sh 'echo $PATH' // Print PATH for debugging
+                    sh 'which npm' // Check npm's location
+
                     // Ensure npm is installed and available
                     sh 'node --version'
                     sh 'npm --version'
