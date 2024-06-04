@@ -1,10 +1,17 @@
 pipeline {
     agent any
-    tools{
-        nodejs 21.0.0
-    }
     stages {
-        stage('checkout') {
+        stage('Install Node.js') {
+            // Install Node.js using the NodeJS plugin
+            steps {
+                script {
+                    def nodejsInstallation = tool name: 'nodejs-21.0.0', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                    env.PATH = "${nodejsInstallation}/bin:${env.PATH}"
+                }
+            }
+        }
+        
+        stage('Checkout') {
             steps {
                 checkout scm
             }
