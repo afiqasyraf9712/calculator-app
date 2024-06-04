@@ -1,24 +1,40 @@
 pipeline {
     agent any
+    tools{
+        nodejs 21.0.0
+    }
     stages {
-        stage('Checkout') {
+        stage('checkout') {
             steps {
                 checkout scm
             }
         }
         
-        stage('Build Docker Image') {
+        stage('Test') {
             steps {
-                sh 'docker build -t my-node-app:1.0 .' // Build Docker image
+                sh 'npm install' // Install npm dependencies
+                sh 'npm test'
             }
         }
         
-        stage('Push Docker Image') {
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+        
+        stage('Build Image') {
+            steps {
+                sh 'docker build -t my-node-app:1.0 .'
+            }
+        }
+        
+        stage('Docker Push') {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u munajatadnan -p ${dockerhubpwd}' // Docker login
-                    sh 'docker tag my-node-app:1.0 capstone_project/v1.0' // Docker tag
-                    sh 'docker push munajatadnan/my-node-app:1.0' // Docker push
+                    sh 'docker login -u munajatadnan -p ${dockerhubpwd}'
+                    sh 'docker tag my-node-app:1.0 capstone_project/v1.0'
+                    sh 'docker push munajatadnan/devops-integration'
                 }
             }
         }
