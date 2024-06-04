@@ -1,3 +1,14 @@
+FROM node:latest
+WORKDIR /apps
+ADD . .
+RUN npm install
+CMD [ "node","index.js" ]
+
+
+
+
+
+
 FROM node:13-alpine3.11 AS installer
 
 RUN mkdir /app
