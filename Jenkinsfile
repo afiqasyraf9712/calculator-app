@@ -12,7 +12,6 @@ pipeline {
         
         stage('Test') {
             steps {
-                cd
                 sh 'npm init -y'
                 sh 'npm install express'
                 sh 'npm install prom-client'
