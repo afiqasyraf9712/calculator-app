@@ -12,6 +12,7 @@ pipeline {
         
         stage('Test') {
             steps {
+                sh 'cd calculator-application-monitoring-app'
                 sh 'npm install' // Install npm dependencies using WSL
                 sh 'npm test'     // Run npm test command using WSL
             }
