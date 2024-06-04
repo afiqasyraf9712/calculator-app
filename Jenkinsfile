@@ -13,6 +13,15 @@ pipeline {
             }
         }
 
+        stage('Setup Node.js and npm') {
+            steps {
+                script {
+                    // Ensure npm is installed and available
+                    sh 'npm --version'
+                }
+            }
+        }
+
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
