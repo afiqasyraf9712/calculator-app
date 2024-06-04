@@ -15,7 +15,7 @@ git clone https://github.com/afiqasyraf9712/calculator-app.git
 
 
 2. **Navigate into the project directory:**
-cd node-prometheus-grafana
+cd calculator-app
 
 
 3. **Start the Docker containers:**
