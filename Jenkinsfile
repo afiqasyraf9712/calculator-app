@@ -5,7 +5,7 @@ pipeline {
             // Install Node.js using the NodeJS plugin
             steps {
                 script {
-                    def nodejsInstallation = tool name: 'nodejs-21.0.0', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                    def nodejsInstallation = tool name: 'nodejs-22.2.0', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                     env.PATH = "${nodejsInstallation}/bin:${env.PATH}"
                 }
             }
