@@ -1,34 +1,34 @@
 pipeline {
     agent any
     stages{
-        stage("checkout"){
+        stage('checkout'){
             steps{
                 checkout scm
             }
         }
 
 
-    stage("Test"){
+    stage('Test'){
         steps{
             sh 'sudo apt install npm'
             sh 'npm test'
         }
     }
 
-    stage("Build"){
+    stage('Build'){
         steps{
             sh 'npm run build'
             sh 'npm test'
         }
     }
 
-    stage("Build Image"){
+    stage('Build Image'){
         sh 'npm run build'
             sh 'npm test'
         }
     }
 
-    stage("Build Image"){
+    stage('Build Image'){
         steps{
             sh 'docker build -t my-node-app:1.0 .'
         }
