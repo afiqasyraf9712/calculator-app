@@ -39,6 +39,9 @@ pipeline {
                     sh 'docker login -u munajatadnan -p ${dockerhubpwd}'
                 }
                 sh 'docker push munajatadnan/devops-integration'
+            }
+        }
+    }
     post {
         always {
             archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
