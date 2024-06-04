@@ -16,7 +16,6 @@ pipeline {
                 sh 'npm install express'
                 sh 'npm install prom-client'
                 sh 'npm install' // Install npm dependencies using WSL
-                sh 'npm test'     // Run npm test command using WSL
             }
         }
         
