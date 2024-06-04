@@ -3,11 +3,12 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                git 'https://github.com/afiqasyraf9712/calculator-app.git'
+                sh 'npm install' // Install npm dependencies using WSL
+                sh 'npm test'     // Run npm test command using WSL
             }
         }
         
-        stage('clone git') {
+        stage('Test') {
             steps {
                 sh 'npm install' // Install npm dependencies using WSL
                 sh 'npm test'     // Run npm test command using WSL
