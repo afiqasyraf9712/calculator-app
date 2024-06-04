@@ -7,7 +7,7 @@ pipeline {
             }
         }
         
-        stage('Build Image') {
+        stage('Build Docker Image') {
             steps {
                 echo "Path is ${env.$PATH}"
                 sh 'docker build -t my-node-app:1.0 .'
