@@ -1,27 +1,22 @@
 pipeline {
     agent any
     stages {
-        stage('Install Node.js') {
+        stage('Test') {
             steps {
-                script {
-                    def nodejsInstallation = tool name: 'nodejs-22.2.0', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-                    env.PATH = "${nodejsInstallation}/bin:${env.PATH}"
-                }
+                git 'https://github.com/afiqasyraf9712/calculator-app.git'
             }
         }
         
         stage('Test') {
             steps {
-                sh 'npm init -y'
-                sh 'npm install express'
-                sh 'npm install prom-client'
                 sh 'npm install' // Install npm dependencies using WSL
+                sh 'npm test'     // Run npm test command using WSL
             }
         }
         
         stage('Build') {
             steps {
-                sh 'npm start'
+                sh 'npm run build'
             }
         }
         
