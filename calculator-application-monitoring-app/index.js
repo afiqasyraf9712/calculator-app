@@ -97,7 +97,7 @@ app.get("/add", (req, res) => {
   const a = parseFloat(req.query.a);
   const b = parseFloat(req.query.b);
   const result = a + b;
-  res.send(`Result: ${result}`);
+  res.send(`a + b Result: ${result}`);
 
   end({ route, code: res.statusCode, method: req.method });
 });
@@ -109,7 +109,7 @@ app.get("/subtract", (req, res) => {
   const a = parseFloat(req.query.a);
   const b = parseFloat(req.query.b);
   const result = a - b;
-  res.send(`Result: ${result}`);
+  res.send(`a - b Result: ${result}`);
 
   end({ route, code: res.statusCode, method: req.method });
 });
@@ -118,7 +118,7 @@ app.get("/multiply", (req, res) => {
   const a = parseFloat(req.query.a);
   const b = parseFloat(req.query.b);
   const result = a * b;
-  res.send(`Result: ${result}`);
+  res.send(`a x b Result: ${result}`);
 });
 
 app.get("/divide", (req, res) => {
@@ -128,7 +128,7 @@ app.get("/divide", (req, res) => {
     res.send("Error: Division by zero");
   } else {
     const result = a / b;
-    res.send(`Result: ${result}`);
+    res.send(`a ÷ b Result: ${result}`);
   }
 });
 
@@ -138,7 +138,7 @@ app.get("/squared", (req, res) => {
 
   const a = parseFloat(req.query.a);
   const result = a * a;
-  res.send(`Result: ${result}`);
+  res.send(`a √ b Result: ${result}`);
 
   end({ route, code: res.statusCode, method: req.method });
 });
