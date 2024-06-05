@@ -23,3 +23,11 @@ jobs:
         env:
           DEFAULT_BRANCH: temp-jenkins2
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+  notifications:
+    email:
+      recipients:
+        - munajat.adnan@gmail.com
+      on_success: always
+      on_failure: always
