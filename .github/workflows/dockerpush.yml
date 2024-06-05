@@ -20,8 +20,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: munajatadnan
-          password: 9113Alex3
+          username: username
+          password: password
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
