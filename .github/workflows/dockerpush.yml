@@ -23,15 +23,18 @@ jobs:
           username: munajatadnan
           password: 9113Alex3
       
+      - name: Extract previous commit message
+        id: extract_commit_message
+        run: |
+          git fetch origin temp-jenkins2
+          git log --format=%B -n 1 $(git rev-parse HEAD^) > commit_message.txt
+          cat commit_message.txt
+      
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v4
         with:
           images: munajatadnan/capstone
-      
-      - name: Extract previous commit message
-        id: extract_commit_message
-        run: echo "::set-output name=commit_message::$(git log --format=%B -n 1 ${{ github.sha }}^)"
       
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
