@@ -1,0 +1,25 @@
+name: Super-Linter
+
+on:
+  push:
+    branches:
+      - '**'  # Monitor all branches
+  pull_request:
+    branches:
+      - '**'  # Monitor all pull requests
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight
+
+jobs:
+  super-lint:
+    name: Lint code base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Super-Linter
+        uses: github/super-linter@v4
+        env:
+          DEFAULT_BRANCH: temp-jenkins2
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
