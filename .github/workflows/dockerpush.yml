@@ -3,6 +3,11 @@ name: Publish Docker image
 on:
   push:
     branches: ['temp-jenkins2']
+  pull_request:
+    branches: ['temp-jenkins2']
+    types:
+      - closed
+      - approved
 
 jobs:
   push_to_registry:
