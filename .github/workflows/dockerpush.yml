@@ -23,13 +23,6 @@ jobs:
           username: munajatadnan
           password: 9113Alex3
       
-      - name: Extract previous commit message
-        id: extract_commit_message
-        run: |
-          git fetch origin temp-jenkins2
-          git log --format=%B -n 1 $(git rev-parse HEAD^) > commit_message.txt
-          cat commit_message.txt
-      
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v4
@@ -42,5 +35,5 @@ jobs:
           context: ./calculator-application-monitoring-app  # Specify the correct build context
           file: ./calculator-application-monitoring-app/Dockerfile  # Specify the path to your Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}-${{ steps.extract_commit_message.outputs.commit_message }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
