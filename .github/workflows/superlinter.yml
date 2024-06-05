@@ -1,6 +1,14 @@
 name: Super-Linter
 
-on: push
+on:
+  push:
+    branches:
+      - '**'  # Monitor all branches
+  pull_request:
+    branches:
+      - '**'  # Monitor all pull requests
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight
 
 jobs:
   super-lint:
@@ -8,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run Super-Linter
         uses: github/super-linter@v4
