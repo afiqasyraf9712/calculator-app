@@ -1,5 +1,8 @@
-# calculator-app
+# My Project
 
-# test update readme
+Welcome to my project!
 
-# second update readme
+## Installation
+
+1. Clone the repository.
+2. Install dependencies.
